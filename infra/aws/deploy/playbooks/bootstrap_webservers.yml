@@ -9,3 +9,4 @@
   roles:
     - my.base
     - my.docker
+    - my.app.wordpress

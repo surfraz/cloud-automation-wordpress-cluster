@@ -1,0 +1,5 @@
+---
+docker_version: 1.10.0-0~{{ ansible_lsb.codename }}
+
+wordpress_db_user: wordpressadmin
+wordpress_db_password: wordpresspassword
