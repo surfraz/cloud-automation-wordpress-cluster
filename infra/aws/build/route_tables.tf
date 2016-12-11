@@ -14,6 +14,6 @@ resource "aws_route_table" "nat" {
 }
 
 resource "aws_route_table_association" "nat" {
-  subnet_id      = "${aws_subnet.webserver_subnet.id}"
+  subnet_id      = "${aws_subnet.webserver_subnet_a.id}"
   route_table_id = "${aws_route_table.nat.id}"
 }

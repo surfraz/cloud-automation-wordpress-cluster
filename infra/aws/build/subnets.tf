@@ -11,14 +11,27 @@ resource "aws_subnet" "nat_subnet" {
   }
 }
 
-resource "aws_subnet" "webserver_subnet" {
+resource "aws_subnet" "webserver_subnet_a" {
   vpc_id                  = "${aws_vpc.wordpress_vpc.id}"
-  cidr_block              = "${var.webserver_subnet_cidr}"
+  cidr_block              = "${var.webserver_subnet_cidr_a}"
   availability_zone       = "${var.availability_zone_a}"
   map_public_ip_on_launch = "true"
 
   tags {
-    Name        = "${var.name_prefix}-${var.environment}-webserver-subnet"
+    Name        = "${var.name_prefix}-${var.environment}-webserver-subnet-a"
+    user        = "${var.name_prefix}"
+    environment = "${var.environment}"
+  }
+}
+
+resource "aws_subnet" "webserver_subnet_b" {
+  vpc_id                  = "${aws_vpc.wordpress_vpc.id}"
+  cidr_block              = "${var.webserver_subnet_cidr_b}"
+  availability_zone       = "${var.availability_zone_b}"
+  map_public_ip_on_launch = "true"
+
+  tags {
+    Name        = "${var.name_prefix}-${var.environment}-webserver-subnet-b"
     user        = "${var.name_prefix}"
     environment = "${var.environment}"
   }

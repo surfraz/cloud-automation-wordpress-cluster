@@ -48,12 +48,20 @@ variable "nat_subnet_cidr" {
   default = "10.150.0.0/24"
 }
 
-variable "webserver_subnet_cidr" {
+variable "webserver_subnet_cidr_a" {
   default = "10.150.1.0/24"
 }
 
-variable "webserver_subnet_prefix" {
+variable "webserver_subnet_prefix_a" {
   default = "10.150.1"
+}
+
+variable "webserver_subnet_cidr_b" {
+  default = "10.150.101.0/24"
+}
+
+variable "webserver_subnet_prefix_b" {
+  default = "10.150.101"
 }
 
 variable "database_subnet_cidr_a" {

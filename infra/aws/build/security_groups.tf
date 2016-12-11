@@ -11,7 +11,35 @@ resource "aws_security_group" "wordpress-rds-security-group" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["${var.webserver_subnet_cidr}"]
+    cidr_blocks = ["${var.webserver_subnet_cidr_a}"]
+  }
+}
+
+resource "aws_security_group" "wordpress-front-loadbalancer-security-group" {
+  name   = "${replace(var.name_prefix, "/[-_\\.@]/", "")}-${replace(var.environment, "/[-_\\.@]/", "")}-front-loadbalancer-sg"
+  vpc_id = "${aws_vpc.wordpress_vpc.id}"
+
+  tags {
+    user        = "${var.name_prefix}"
+    environment = "${var.environment}"
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 8080
+    to_port   = 8080
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "${var.webserver_subnet_cidr_a}",
+      "${var.webserver_subnet_cidr_b}",
+    ]
   }
 }
 
@@ -32,8 +60,8 @@ resource "aws_security_group" "wordpress-webserver-security-group" {
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
