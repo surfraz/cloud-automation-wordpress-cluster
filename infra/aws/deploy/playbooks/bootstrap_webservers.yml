@@ -1,4 +1,4 @@
-- hosts: tag_Name_webserver_*_{{ user_name }}_{{ environment }}
+- hosts: tag_Name_webserver_*_{{ user_name }}_{{ user_environment }}
   user: ubuntu
   become: yes
   become_user: root
