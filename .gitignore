@@ -1,6 +1,7 @@
 # Ignored terraform files
 *.tfplan
 *.terraform
+terraform.tfstate
 terraform.tfstate.backup
 
 # python files
