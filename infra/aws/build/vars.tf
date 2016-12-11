@@ -8,9 +8,14 @@ variable "region" {
   description = "AWS region name"
 }
 
-variable "availability_zone" {
+variable "availability_zone_a" {
   default     = "eu-west-1a"
-  description = "Availability zone in AWS region"
+  description = "First availability zone in AWS region"
+}
+
+variable "availability_zone_b" {
+  default     = "eu-west-1b"
+  description = "Second availability zone in AWS region"
 }
 
 variable "environment" {
@@ -30,8 +35,12 @@ variable "webserver_subnet_cidr" {
   default = "10.150.1.0/24"
 }
 
-variable "database_subnet_cidr" {
+variable "database_subnet_cidr_a" {
   default = "10.150.2.0/24"
+}
+
+variable "database_subnet_cidr_b" {
+  default = "10.150.102.0/24"
 }
 
 # database related variables

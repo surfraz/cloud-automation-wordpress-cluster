@@ -1,5 +1,5 @@
 resource "aws_security_group" "wordpress-rds-security-group" {
-  name   = "${replace(var.name_prefix, "/[-_\\.@]/", "")}-${replace(var.environment, "/[-_\\.@]/", "")}-wordpress"
+  name   = "${replace(var.name_prefix, "/[-_\\.@]/", "")}-${replace(var.environment, "/[-_\\.@]/", "")}-rds-sg"
   vpc_id = "${aws_vpc.wordpress_vpc.id}"
 
   tags {
@@ -16,7 +16,7 @@ resource "aws_security_group" "wordpress-rds-security-group" {
 }
 
 resource "aws_security_group" "wordpress-webserver-security-group" {
-  name   = "${replace(var.name_prefix, "/[-_\\.@]/", "")}-${replace(var.environment, "/[-_\\.@]/", "")}-wordpress"
+  name   = "${replace(var.name_prefix, "/[-_\\.@]/", "")}-${replace(var.environment, "/[-_\\.@]/", "")}-webserver-sg"
   vpc_id = "${aws_vpc.wordpress_vpc.id}"
 
   tags {
