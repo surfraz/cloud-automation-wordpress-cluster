@@ -39,6 +39,10 @@ variable "webservers_instance_type" {
   default = "t1.micro"
 }
 
+variable "webservers_count" {
+  default = 1
+}
+
 # networking related variables
 variable "vpc_cidr" {
   default = "10.150.0.0/16"
