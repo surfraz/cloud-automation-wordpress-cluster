@@ -8,10 +8,14 @@ resource "aws_security_group" "wordpress-rds-security-group" {
   }
 
   ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = ["${var.webserver_subnet_cidr_a}"]
+    from_port = 3306
+    to_port   = 3306
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "${var.webserver_subnet_cidr_a}",
+      "${var.webserver_subnet_cidr_b}",
+    ]
   }
 }
 
