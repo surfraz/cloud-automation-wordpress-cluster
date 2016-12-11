@@ -19,7 +19,6 @@ Where:-
  
 
 # TODO/Bugs:-
- - I need more time to debug the wordpress to RDS db connectivity
  - Better output and validation in the cloud-automation.sh script
  - Use terraform modules for DB and Webserver instances
  - Write an infrastructure test suite

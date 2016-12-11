@@ -104,4 +104,15 @@ resource "aws_security_group" "wordpress-webserver-security-group" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  egress {
+    from_port = 3306
+    to_port   = 3306
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "${var.database_subnet_cidr_a}",
+      "${var.database_subnet_cidr_b}",
+    ]
+  }
 }
