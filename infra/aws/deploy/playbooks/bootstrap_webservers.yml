@@ -1,0 +1,11 @@
+- hosts: tag_Name_webserver_*_{{ user_name }}_{{ environment }}
+  user: ubuntu
+  become: yes
+  become_user: root
+
+  vars_files:
+    - "../vars/common.yml"
+
+  roles:
+    - my.base
+    - my.docker
