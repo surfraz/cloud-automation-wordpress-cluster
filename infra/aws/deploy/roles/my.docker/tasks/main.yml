@@ -1,0 +1,16 @@
+---
+- name: add docker apt gpg key
+  apt_key:
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+    keyserver: pool.sks-keyservers.net
+
+- name: add docker official debian repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_lsb.codename }} main
+    update_cache: yes
+
+- name: install docker engine package
+  apt: name=docker-engine={{ docker_version }}
+
+- name: install docker-py pip
+  pip: name=docker-py
