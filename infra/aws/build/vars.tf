@@ -1,15 +1,37 @@
 variable "name_prefix" {
-  type = "string"
+  type        = "string"
   description = "AWS object names will have this prefix"
 }
 
 variable "region" {
-  default = "eu-west-1"
+  default     = "eu-west-1"
   description = "AWS region name"
+}
+
+variable "availability_zone" {
+  default     = "eu-west-1a"
+  description = "Availability zone in AWS region"
 }
 
 variable "environment" {
   default = "dev"
+}
+
+# networking related variables
+variable "vpc_cidr" {
+  default = "10.150.0.0/16"
+}
+
+variable "nat_subnet_cidr" {
+  default = "10.150.0.0/24"
+}
+
+variable "webserver_subnet_cidr" {
+  default = "10.150.1.0/24"
+}
+
+variable "database_subnet_cidr" {
+  default = "10.150.2.0/24"
 }
 
 # database related variables
