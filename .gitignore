@@ -1,0 +1,11 @@
+# Ignored terraform files
+*.tfplan
+*.terraform
+terraform.tfstate.backup
+
+# python files
+*.pyc
+venv/
+
+# IntelliJ IDE
+.idea/
