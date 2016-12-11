@@ -3,6 +3,10 @@ variable "name_prefix" {
   description = "AWS object names will have this prefix"
 }
 
+variable "user_ssh_key_pair" {
+  description = "Please provide your aws ssh key_pair name"
+}
+
 variable "region" {
   default     = "eu-west-1"
   description = "AWS region name"
@@ -22,6 +26,19 @@ variable "environment" {
   default = "dev"
 }
 
+# machine image IDs
+variable "webservers_ami" {
+  type = "map"
+
+  default = {
+    eu-west-1 = "ami-22bae151"
+  }
+}
+
+variable "webservers_instance_type" {
+  default = "t1.micro"
+}
+
 # networking related variables
 variable "vpc_cidr" {
   default = "10.150.0.0/16"
@@ -33,6 +50,10 @@ variable "nat_subnet_cidr" {
 
 variable "webserver_subnet_cidr" {
   default = "10.150.1.0/24"
+}
+
+variable "webserver_subnet_prefix" {
+  default = "10.150.1"
 }
 
 variable "database_subnet_cidr_a" {
